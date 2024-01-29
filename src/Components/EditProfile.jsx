@@ -69,7 +69,7 @@ export default function FormDialog({
               initialValues
               validationSchema
               method="patch"
-              action={`/tiwtter/profile/${currentUser.username}`}
+              action={`/tweet/profile/${currentUser.username}`}
             >
               <input
                 type="text"

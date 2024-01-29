@@ -40,7 +40,7 @@ const CreateComment = ({ postCom, setDep, dep }) => {
     <div className="border-b-[1px] border-neutral-800 px-5 py-2">
       <div className="flex flex-row gap-4">
         <div className="mt-2">
-          <Link to={`/tiwtter/profile/${currentUser.username}`}>
+          <Link to={`/tweet/profile/${currentUser.username}`}>
             <Avatar
               src={currentUser.profilePicture}
               alt="Img Profile"

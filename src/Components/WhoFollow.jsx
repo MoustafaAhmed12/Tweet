@@ -39,7 +39,7 @@ const WhoFollow = () => {
 
   return (
     <div className="px-6 py-4 hidden xl:block h-[500px] overflow-hidden w-96 fixed ms-[58rem]">
-      <div className="rounded-xl bg-[#202327] p-6 pb-10">
+      <div className="rounded-xl bg-[#18191c] p-6 pb-10">
         {username ? (
           <h2 className="text-white text-2xl font-semibold">Your Followings</h2>
         ) : (

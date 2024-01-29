@@ -1,36 +1,35 @@
-// import React from "react";
-// import { BiLogOut } from "react-icons/bi";
-import { BsHouseFill, BsBellFill } from "react-icons/bs";
-import { FaUser } from "react-icons/fa";
 import SidebarLogo from "./SidebarLogo";
 import SidebarItem from "./SidebarItem";
 import SidebarTweetButton from "./SidebarTweetButton ";
 import { useSelector } from "react-redux";
 import LogoutItem from "./LogoutItem";
+import { IoHomeOutline } from "react-icons/io5";
+import { MdOutlineExplore } from "react-icons/md";
+import { CiUser } from "react-icons/ci";
 const SideBar = () => {
   const { currentUser } = useSelector((state) => state.user);
   const items = [
     {
-      icon: BsHouseFill,
+      icon: IoHomeOutline,
       label: "Home",
-      href: "/tiwtter",
+      href: `/tweet/${currentUser._id}`,
     },
     {
-      icon: BsBellFill,
+      icon: MdOutlineExplore,
       label: "Explore",
-      href: "/tiwtter/explore",
+      href: "/tweet/explore",
     },
     {
-      icon: FaUser,
+      icon: CiUser,
       label: "Profile",
-      href: `/tiwtter/profile/${currentUser.username}`,
+      href: `/tweet/profile/${currentUser.username}`,
     },
   ];
   return (
     <aside className="col-span-1 h-full pr-4 md:pr-2 fixed ">
       <div className="flex flex-col items-end ps-2">
         <div className="space-y-2 lg:w-[230px]">
-          <SidebarLogo />
+          <SidebarLogo currentUser={currentUser} />
           {items.map((item) => (
             <SidebarItem
               key={item.href}

@@ -51,7 +51,9 @@ const LogoutItem = () => {
       "
         >
           <BiLogOut size={24} color="white" />
-          <p className="hidden lg:block text-white text-2xl">Logout</p>
+          <p className="hidden lg:block text-white text-2xl font-light">
+            Logout
+          </p>
         </div>
       </div>
     </NavLink>

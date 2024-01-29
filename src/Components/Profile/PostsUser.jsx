@@ -45,17 +45,17 @@ const PostUser = ({ post, currentUser, user }) => {
         return like;
       }
     }
-    return "No Likes";
+    return "likes";
   };
 
   const { desc, createdAt } = post;
   const { name, surname, username, profilePicture } = user;
 
   const goToUser = () => {
-    navigate(`/tiwtter/profile/${username}`);
+    navigate(`/tweet/profile/${username}`);
   };
   const goToPost = () => {
-    navigate(`/tiwtter/post/${post._id}`);
+    navigate(`/tweet/post/${post._id}`);
   };
 
   dayjs.extend(relativeTime);

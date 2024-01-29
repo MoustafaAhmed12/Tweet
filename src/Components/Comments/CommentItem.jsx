@@ -6,7 +6,7 @@ const CommentItem = ({ data }) => {
   const navigate = useNavigate();
 
   const goToUser = () => {
-    navigate(`/tiwtter/profile/${username}`);
+    navigate(`/tweet/profile/${username}`);
   };
   dayjs.extend(relativeTime);
 

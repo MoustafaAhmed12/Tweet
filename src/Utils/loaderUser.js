@@ -2,11 +2,10 @@ import { redirect } from "react-router-dom";
 import { axiosInstance } from "./config";
 // import { Edit_Profile } from "./APIs";
 import toast from "react-hot-toast";
+import { GET_USER } from "./APIs";
 
 export const loaderUser = async ({ params }) => {
-  const { data: user } = await axiosInstance.get(
-    `/user?username=${params.username}`
-  );
+  const user = await GET_USER(params.username);
   return user;
 };
 
@@ -27,5 +26,5 @@ export const editUser = async ({ params, request }) => {
     toast.dismiss(loadingToastId);
     toast.error(err.response.data.msg);
   }
-  return redirect(`/tiwtter/profile/${params.username}`);
+  return redirect(`/tweet/profile/${params.username}`);
 };

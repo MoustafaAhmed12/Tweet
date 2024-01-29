@@ -22,13 +22,14 @@ export const PostActions = async ({ request }) => {
       } catch (error) {
         console.log(error);
       }
-      return redirect("/tiwtter");
+      return redirect(`/tweet/${post.userId}`);
     }
     case "DELETE": {
       const formData = await request.formData();
       let post = {
         postId: formData.get("postId"),
       };
+      const userId = formData.get("userId");
       const loadingToastId = toast.loading("Processing...");
       try {
         await axiosInstance.delete(`/post/${post.postId}`);
@@ -37,7 +38,7 @@ export const PostActions = async ({ request }) => {
       } catch (error) {
         console.log(error);
       }
-      return redirect("/tiwtter");
+      return redirect(`/tweet/${userId}`);
     }
     case "PATCH": {
       const formData = await request.formData();
@@ -56,7 +57,7 @@ export const PostActions = async ({ request }) => {
         toast.dismiss(loadingToastId);
         toast.error(err.response.data.msg);
       }
-      return redirect("/tiwtter");
+      return redirect(`/tweet/${post.userId}`);
     }
   }
 };

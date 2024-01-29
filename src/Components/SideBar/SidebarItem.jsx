@@ -46,7 +46,9 @@ const SidebarItem = ({ label, icon: Icon, href }) => {
       "
           >
             <Icon size={24} color="white" />
-            <p className="hidden lg:block text-white text-2xl">{label}</p>
+            <p className="hidden lg:block text-white text-2xl font-light">
+              {label}
+            </p>
           </div>
         </div>
       </NavLink>

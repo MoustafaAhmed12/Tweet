@@ -1,7 +1,6 @@
 import CommentItem from "./CommentItem.JSX";
 
 const CommentFeed = ({ comments }) => {
-  console.log(comments);
   return (
     <>
       {comments.map((comment) => (

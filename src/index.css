@@ -1,13 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* Firefox */
+
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--secondary) var(--primary);
 }
 
-/* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 15px;
 }
@@ -24,7 +23,9 @@
 }
 
 body {
-  background-color: black;
+  background-color: black !important;
+  height: 800px;
+  font-family: "Roboto", sans-serif;
 }
 
 .css-1qxadfk-MuiPaper-root-MuiDialog-paper {

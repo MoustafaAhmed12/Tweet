@@ -20,11 +20,11 @@ const UserList = ({ user, username }) => {
           unfollowUser({ userId: user._id, currentId: currentUser._id })
         );
         toast.success(`You Unfollow ${user.name} ${user.surname}`);
-        setIsLoading(true);
+        setIsLoading(false);
       } else {
         dispatch(followUser({ userId: user._id, currentId: currentUser._id }));
         toast.success(`You Follow ${user.name} ${user.surname}`);
-        setIsLoading(true);
+        setIsLoading(false);
       }
       setFollowed(!followed);
     } catch (error) {
@@ -37,7 +37,7 @@ const UserList = ({ user, username }) => {
       {currentUser.username !== user?.username ? (
         <div key={user._id} className="flex flex-col gap-6 mt-4">
           <div className="flex flex-row justify-between">
-            <Link to={`/tiwtter/profile/${user?.username}`} className="flex">
+            <Link to={`/tweet/profile/${user?.username}`} className="flex">
               <Avatar
                 src={user.profilePicture}
                 sx={{ width: "40px", height: "40px" }}
@@ -58,7 +58,7 @@ const UserList = ({ user, username }) => {
                   followed
                     ? "bg-transparent text-white"
                     : "bg-white text-black border-black"
-                } disabled:opacity-70 disabled:cursor-not-allowed rounded-full font-semibold hover:opacity-80 transition border-[1px] w-fit bg-white text-black border-black text-sm px-4 py-2`}
+                } rounded-full font-semibold hover:opacity-80 transition border-[1px] bg-white text-black border-black text-sm px-4`}
               >
                 {isLoading ? "Loading" : followed ? "Following" : "Follow"}
               </button>

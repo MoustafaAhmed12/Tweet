@@ -5,7 +5,6 @@ import {
 } from "react-router-dom";
 // Components
 import Layout from "../Components/Layout";
-import LayoutFeed from "./../Components/Posts/LayoutFeed";
 // Pages
 import Login from "../Pages/Login";
 import ProtectRoute from "./ProtectRoute";
@@ -14,9 +13,10 @@ import Register from "../Pages/Register";
 import Explore from "../Pages/Explore";
 import PostDetails from "../Pages/PostDetails";
 import ErrorPage from "../Pages/ErrorPage";
+import Home from "../Pages/Home";
 // Loader
 import { editUser, loaderUser } from "./loaderUser";
-import { loaderPost, loaderPostById } from "./loaderPosts";
+import { loaderPost, loaderPostById, loaderTimeline } from "./loaderPosts";
 import { PostActions } from "./actionPost";
 
 export const router = createBrowserRouter(
@@ -24,15 +24,19 @@ export const router = createBrowserRouter(
     <Route path="/" errorElement={<ErrorPage />}>
       <Route index element={<Login />} />
       <Route
-        path="tiwtter"
+        path="tweet"
         element={
           <ProtectRoute>
             <Layout />
           </ProtectRoute>
         }
-        action={PostActions}
       >
-        <Route index element={<LayoutFeed />} loader={loaderPost} />
+        <Route
+          path=":userId"
+          element={<Home />}
+          loader={loaderTimeline}
+          action={PostActions}
+        />
         <Route
           path="profile/:username"
           element={<Profile />}

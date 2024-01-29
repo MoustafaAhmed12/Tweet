@@ -35,7 +35,7 @@ const Login = () => {
     await axiosInstance
       .post("/login", user)
       .then(({ data }) => {
-        navigate("/tiwtter", { replace: true });
+        navigate("/tweet/explore", { replace: true });
         localStorage.setItem("userToken", data.userToken);
         dispatch(getUser());
         setIsLoading(false);

@@ -23,12 +23,6 @@ function App() {
   const theme = createTheme({
     palette: {
       mode: "dark",
-      // primary: {
-      //   main: "#000", // Change the primary color for dark mode
-      // },
-      // secondary: {
-      //   main: "#FF4081", // Change the secondary color for dark mode
-      // },
     },
   });
   return (

@@ -9,17 +9,17 @@ const NotFound = () => {
       <p className="my-3">Sorry, an unexpected error has occurred.</p>
       <div className="">
         <h1 className="inline-block mr-4 text-xl font-medium ali">
-          {!error.response.status ? 404 : ""} <span className="ms-3">|</span>
+          {!error.status ? 404 : ""} <span className="ms-3">|</span>
         </h1>
 
         <div className="inline-block">
           <h2 className="text-xl font-normal text-red-600">
-            {error.response.data.error || error.message}
+            {error.statusText || error.message}
           </h2>
         </div>
       </div>
       <Link
-        to={"/tiwtter"}
+        to={"/tweet"}
         className="border-[1px] py-2 px-4 mt-5 rounded-md hover:bg-white hover:text-black transition"
       >
         Go Home

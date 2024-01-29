@@ -17,7 +17,7 @@ const CreatePost = () => {
     <div className="border-neutral-800 px-5 py-2">
       <div className="flex flex-row gap-4">
         <div className="mt-2">
-          <Link to={`/tiwtter/profile/${currentUser.username}`}>
+          <Link to={`/tweet/profile/${currentUser.username}`}>
             <Avatar
               src={currentUser.profilePicture}
               alt="Img Profile"
@@ -25,7 +25,11 @@ const CreatePost = () => {
             />
           </Link>
         </div>
-        <Form className="w-full" method="POST" action="/tiwtter">
+        <Form
+          className="w-full"
+          method="POST"
+          action={`/tweet/${currentUser._id}`}
+        >
           <input
             type="text"
             name="userId"

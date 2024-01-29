@@ -45,17 +45,17 @@ const Post = ({ post, currentUser }) => {
         return like;
       }
     }
-    return "";
+    return "like";
   };
 
   const { desc, createdAt } = post;
   const { name, surname, username, profilePicture } = post.userId;
 
   const goToUser = () => {
-    navigate(`/tiwtter/profile/${username}`);
+    navigate(`/tweet/profile/${username}`);
   };
   const goToPost = () => {
-    navigate(`/tiwtter/post/${post._id}`);
+    navigate(`/tweet/post/${post._id}`);
   };
 
   dayjs.extend(relativeTime);
@@ -106,7 +106,6 @@ const Post = ({ post, currentUser }) => {
                 flex 
                 flex-row 
                 items-center 
-                text-[#D2156D] 
                 gap-2 
                 cursor-pointer 
                 transition 

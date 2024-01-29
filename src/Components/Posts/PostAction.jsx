@@ -105,7 +105,13 @@ const PostAction = ({ post, currentUser }) => {
         open={open}
         onClose={handleClose}
       >
-        <Form method="delete" action="/tiwtter">
+        <Form method="delete" action={`/tweet/${currentUser._id}`}>
+          <input
+            type="text"
+            className="hidden"
+            name="userId"
+            defaultValue={currentUser._id}
+          />
           <input
             type="text"
             className="hidden"
@@ -132,7 +138,7 @@ const PostAction = ({ post, currentUser }) => {
             <Form
               // component={<Form />}
               method="patch"
-              action="/tiwtter"
+              action={`/tweet/${currentUser._id}`}
               noValidate
               className="w-[500px] max-w-full h-56 my-5"
             >
