@@ -53,11 +53,7 @@ const UserList = ({ user, username }) => {
             {!username ? (
               <button
                 onClick={handleFollow}
-                className={`${
-                  followed
-                    ? "bg-white text-black border-black"
-                    : " bg-transparent text-white"
-                } px-5 py-1 text-sm font-medium rounded-full hover:bg-white hover:text-black hover:text-xs transition`}
+                className={`bg-transparent text-sky-700 px-5 py-1 text-sm font-medium rounded-full hover:text-sky-600 transition`}
               >
                 {followed ? "Loading" : "Follow"}
               </button>

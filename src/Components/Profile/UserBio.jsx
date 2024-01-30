@@ -1,18 +1,12 @@
 import { BiCalendar } from "react-icons/bi";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { useDispatch, useSelector } from "react-redux";
-import { useCallback, useState } from "react";
-import { followUser, unfollowUser } from "./../../GlobalState/userSlice";
-import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 import EditProfile from "./../EditProfile";
 
-const UserBio = ({ user }) => {
+const UserBio = ({ user, handleFollow, followed }) => {
   const { currentUser } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-  const [followed, setFollowed] = useState(
-    currentUser.followings?.includes(user?._id)
-  );
 
   const [open, setOpen] = useState(false);
 
@@ -20,22 +14,10 @@ const UserBio = ({ user }) => {
     setOpen(true);
   };
 
-  const handleFollow = useCallback(async () => {
-    try {
-      if (followed) {
-        dispatch(
-          unfollowUser({ userId: user._id, currentId: currentUser._id })
-        );
-        toast.success(`You Unfollow ${user.name} ${user.surname}`);
-      } else {
-        dispatch(followUser({ userId: user._id, currentId: currentUser._id }));
-        toast.success(`You Follow ${user.name} ${user.surname}`);
-      }
-      setFollowed(!followed);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [currentUser, dispatch, followed, user]);
+  console.log(followed);
+
+  console.log(user._id);
+  console.log(currentUser.followings);
 
   dayjs.extend(relativeTime);
   return (

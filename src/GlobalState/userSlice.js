@@ -67,30 +67,19 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(followUser.pending, (state) => {
-        state.isLoading = true;
-      })
       .addCase(followUser.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-
         state.currentUser.followings = [
           ...state.currentUser.followings,
           payload,
         ];
       })
-      .addCase(unfollowUser.pending, (state) => {
-        state.isLoading = true;
-      })
       .addCase(unfollowUser.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
         state.currentUser.followings = state.currentUser.followings.filter(
           (f) => f !== payload
         );
       })
       .addCase(unfollowUser.rejected, (state, action) => {
-        state.isLoading = false;
         state.error = action.payload;
-        console.log(action.payload);
       });
   },
 });

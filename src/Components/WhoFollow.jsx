@@ -16,13 +16,14 @@ const WhoFollow = () => {
   useEffect(() => {
     setIsLoading(true);
     async function fetchData() {
-      const { data } = await axiosInstance.get(`/users`);
-      const u = data.filter((u) => !currentUser.followings?.includes(u._id));
-      setUsers(u);
+      const { data } = await axiosInstance.get(`/users/${currentUser._id}`);
+      setUsers(data);
       setIsLoading(false);
     }
     fetchData();
-  }, [currentUser.followings]);
+  }, [currentUser]);
+
+  // console.log(users);
 
   useEffect(() => {
     setIsLoading(true);
