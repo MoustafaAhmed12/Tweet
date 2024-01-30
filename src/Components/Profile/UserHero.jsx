@@ -16,7 +16,7 @@ const UserHero = ({ user }) => {
         <div className="absolute -bottom-16 left-4">
           <Avatar
             src={profilePicture}
-            sx={{ width: "9rem", height: "9rem" }}
+            sx={{ width: "8rem", height: "8rem" }}
             className={` border-4 border-black rounded-full  hover:opacity-90  transition  cursor-pointer relative`}
           />
         </div>

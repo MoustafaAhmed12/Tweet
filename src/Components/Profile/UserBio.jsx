@@ -46,6 +46,7 @@ const UserBio = ({ user }) => {
           {currentUser?._id === user._id ? (
             <button
               className=" disabled:opacity-70
+              max-sm:text-sm
         disabled:cursor-not-allowed
         rounded-full
         font-bold
@@ -74,7 +75,7 @@ const UserBio = ({ user }) => {
                 followed
                   ? "bg-transparent text-white"
                   : "bg-white text-black border-black"
-              }  text-md px-5 py-2 mr-2 mt-1`}
+              }  text-md px-5 py-2 mr-2 mt-1 max-sm:text-sm`}
             >
               {followed ? "Following" : "Follow"}
             </button>

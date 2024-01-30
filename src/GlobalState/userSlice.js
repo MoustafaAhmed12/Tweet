@@ -16,7 +16,6 @@ export const getUser = createAsyncThunk("user/getUser", async (_, thunkAPI) => {
 export const followUser = createAsyncThunk(
   "user/followUser",
   async ({ userId, currentId }, thunkAPI) => {
-    console.log(userId, currentId);
     const { rejectWithValue } = thunkAPI;
     try {
       await axiosInstance.put(`/user/${userId}/follow`, {

@@ -43,7 +43,7 @@ const CreatePost = () => {
             }}
             value={post.desc}
             id="outlined-multiline-flexible"
-            placeholder={`What's on your mind ${currentUser.username}?`}
+            placeholder={`What is happening?!`}
             variant="standard"
             multiline
             fullWidth

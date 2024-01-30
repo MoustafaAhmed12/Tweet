@@ -9,7 +9,7 @@ import { BiHeart } from "react-icons/bi";
 import { FaHeart } from "react-icons/fa6";
 
 import { AiOutlineMessage } from "react-icons/ai";
-// import React from 'react'
+import PostAction from "../Posts/PostAction";
 
 const PostUser = ({ post, currentUser, user }) => {
   const [like, setLike] = useState(post.likes.length);
@@ -32,28 +32,9 @@ const PostUser = ({ post, currentUser, user }) => {
 
     setIsLiked(!isLiked);
   };
-
-  const likes = () => {
-    if (like) {
-      if (isLiked && like - 1 === 0) {
-        return "You";
-      } else if (isLiked && like - 1 === 1) {
-        return "You and 1 more";
-      } else if (isLiked && like - 1 !== 1) {
-        return `You and ${like - 1} others`;
-      } else {
-        return like;
-      }
-    }
-    return "likes";
-  };
-
   const { desc, createdAt } = post;
   const { name, surname, username, profilePicture } = user;
 
-  const goToUser = () => {
-    navigate(`/tweet/profile/${username}`);
-  };
   const goToPost = () => {
     navigate(`/tweet/post/${post._id}`);
   };
@@ -62,89 +43,44 @@ const PostUser = ({ post, currentUser, user }) => {
 
   return (
     <>
-      <div
-        className="
-        border-b-[1px] 
-        border-neutral-800 
-        p-5 
-        cursor-pointer 
-        hover:bg-neutral-900 
-        transition
-      "
-      >
+      <div className="border-b-[1px] border-neutral-800 p-5 cursor-pointer hover:bg-neutral-900 transition">
         <div className="flex flex-row items-start gap-3">
-          <Avatar src={profilePicture} alt="Img Profile" onClick={goToUser} />
-
+          <Avatar src={profilePicture} alt="Img Profile" />
           <div>
-            <div
-              className="flex flex-row items-center gap-2"
-              onClick={goToPost}
-            >
-              <p
-                onClick={goToUser}
-                className="
-                text-white 
-                font-semibold 
-                cursor-pointer 
-                hover:underline
-            "
-              >
+            <div className="flex flex-row items-center gap-2 relative">
+              <p className="text-white max-sm:text-sm font-semibold cursor-pointer hover:underline">
                 {name} {surname}
               </p>
-              <span
-                onClick={goToUser}
-                className="
-                text-neutral-500
-                cursor-pointer
-                hover:underline
-                hidden
-                md:block
-            "
-              >
+              <span className=" text-neutral-500 cursor-pointer hover:underline hidden md:block">
                 @{username}
               </span>
               <span className="text-neutral-500 text-sm">
-                {dayjs(createdAt).fromNow()}
+                {dayjs(createdAt).fromNow().slice(0, 3)}
               </span>
+
+              <PostAction post={post} currentUser={currentUser} />
             </div>
-            <div onClick={goToPost} className="text-white mt-1">
+            <div onClick={goToPost} className="text-white mt-1 max-sm:text-xs">
               {desc}
             </div>
             <div className="flex flex-row items-center mt-3 gap-10">
               <div
                 onClick={likeHandler}
-                className="
-                flex 
-                flex-row 
-                items-center 
-                text-neutral-500 
-                gap-2 
-                cursor-pointer 
-                transition 
-                hover:text-red-500
-            "
+                className="flex flex-row items-center gap-2 cursor-pointer transition hover:text-[#D2156D]"
               >
                 {isLiked ? (
-                  <FaHeart
-                    className="text-red-600 brightness-100 hover:brightness-200"
-                    size={20}
-                  />
+                  <FaHeart className="text-[#D2156D]" size={20} />
                 ) : (
-                  <BiHeart color="white" size={20} />
+                  <BiHeart
+                    className="text-[#555] hover:text-[#D2156D]"
+                    size={22}
+                  />
                 )}
-                <p>{likes() || ""}</p>
+                <p>{like || 0}</p>
               </div>
               <div
-                className="
-                flex 
-                flex-row 
-                items-center 
-                text-neutral-500 
-                gap-2 
-                cursor-pointer 
-                transition 
-                hover:text-sky-500
-            "
+                onClick={goToPost}
+                className="flex flex-row items-center text-neutral-500 gap-2 cursor-pointer transition hover:text-sky-500"
               >
                 <AiOutlineMessage size={20} />
                 <p>{post.comments?.length || 0}</p>

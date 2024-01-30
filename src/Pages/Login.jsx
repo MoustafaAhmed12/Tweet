@@ -58,13 +58,13 @@ const Login = () => {
 
   return (
     <>
-      <div className=" flex justify-between w-[75%] h-screen items-center mx-auto max-lg:justify-center">
+      <div className="flex justify-between max-md:flex-col max-md:justify-around w-[85%] max:lg:max-w-[80%] h-screen items-center mx-auto max-lg:justify-center">
         <img
-          src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+          src="https://thehandyx.com/static/media/otpverification.a9199085.svg"
           alt="Img-Login"
-          className="hidden lg:block w-[50%]"
+          className="w-[50%] max-md:w-80"
         />
-        <div className="w-[40%] md:w-[70%]">
+        <div className="w-full md:w-[70%] ms-1 md:ms-[7%]">
           <div className="mb-4">
             <h1 className="text-center text-4xl">Sign In</h1>
           </div>

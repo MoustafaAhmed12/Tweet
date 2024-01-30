@@ -53,13 +53,13 @@ const Register = () => {
 
   return (
     <>
-      <div className=" flex justify-between w-[75%] h-screen items-center mx-auto max-lg:justify-center">
+      <div className="flex justify-between w-[95%] md:max-w-[80%] h-screen items-center mx-auto max-lg:justify-center">
         <img
           src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-          alt="Img-Login"
+          alt="Img-Register"
           className="hidden lg:block w-[50%]"
         />
-        <div className="w-[40%] md:w-[70%]">
+        <div className="w-full ms-1 md:w-[70%]">
           <div className="mb-4">
             <h1 className="text-center text-4xl">Sign Up</h1>
           </div>

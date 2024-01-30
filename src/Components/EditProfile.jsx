@@ -36,7 +36,11 @@ export default function FormDialog({
 
   return (
     <>
-      <Dialog open={open} onClose={handleClose} className="bg-[#242d34c3]">
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        className="bg-[#242d34c3] overflow-hidden"
+      >
         <DialogTitle className="bg-black text-white w-[inherit] flex justify-between">
           {isCreatePost ? "Create Post" : "  Edit Profile"}
           <button
@@ -63,7 +67,7 @@ export default function FormDialog({
             X
           </button>
         </DialogTitle>
-        <DialogContent className="bg-black text-white w-[550px] max-sm:w-[380px]">
+        <DialogContent className="bg-black text-white w-[550px] max-sm:w-[340px]">
           {!isCreatePost ? (
             <Form
               initialValues

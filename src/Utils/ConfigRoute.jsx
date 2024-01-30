@@ -16,7 +16,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home";
 // Loader
 import { editUser, loaderUser } from "./loaderUser";
-import { loaderPost, loaderPostById, loaderTimeline } from "./loaderPosts";
+import { loaderPosts, loaderPostById, loaderTimeline } from "./loaderPosts";
 import { PostActions } from "./actionPost";
 
 export const router = createBrowserRouter(
@@ -43,7 +43,7 @@ export const router = createBrowserRouter(
           loader={loaderUser}
           action={editUser}
         />
-        <Route path="explore" element={<Explore />} loader={loaderPost} />
+        <Route path="explore" element={<Explore />} loader={loaderPosts} />
         <Route
           path="post/:postId"
           element={<PostDetails />}

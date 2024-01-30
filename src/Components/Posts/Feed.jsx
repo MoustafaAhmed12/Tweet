@@ -11,13 +11,9 @@ const Feed = ({ posts }) => {
           <Post key={post._id} post={post} currentUser={currentUser} />
         ))
       ) : (
-        <Alert
-          sx={{ width: "80%", margin: "2rem auto", fontSize: "1.2rem" }}
-          variant="filled"
-          severity="error"
-        >
+        <Alert severity="warning" className="w-[80%] my-8 mx-auto">
           <AlertTitle>No Posts Yet</AlertTitle>
-          You can create post!
+          You can create post or follow people
         </Alert>
       )}
     </>

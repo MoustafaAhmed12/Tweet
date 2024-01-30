@@ -6,49 +6,48 @@ import toast from "react-hot-toast";
 import { useCallback, useState } from "react";
 const UserList = ({ user, username }) => {
   const { currentUser } = useSelector((state) => state.user);
-  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const [followed, setFollowed] = useState(
     currentUser.followings?.includes(user?._id)
   );
 
   const handleFollow = useCallback(async () => {
-    setIsLoading(true);
     try {
       if (followed) {
         dispatch(
           unfollowUser({ userId: user._id, currentId: currentUser._id })
         );
         toast.success(`You Unfollow ${user.name} ${user.surname}`);
-        setIsLoading(false);
       } else {
         dispatch(followUser({ userId: user._id, currentId: currentUser._id }));
         toast.success(`You Follow ${user.name} ${user.surname}`);
-        setIsLoading(false);
       }
       setFollowed(!followed);
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   }, [currentUser, dispatch, followed, user]);
 
   return (
     <>
       {currentUser.username !== user?.username ? (
-        <div key={user._id} className="flex flex-col gap-6 mt-4">
-          <div className="flex flex-row justify-between">
-            <Link to={`/tweet/profile/${user?.username}`} className="flex">
+        <ul key={user._id} className="flex flex-col gap-5 mt-4">
+          <li className="flex justify-between">
+            <Link
+              to={`/tweet/profile/${user?.username}`}
+              className="flex min-w-0 gap-x-4"
+            >
               <Avatar
                 src={user.profilePicture}
-                sx={{ width: "40px", height: "40px" }}
+                className="h-14 w-14 flex-none rounded-full bg-gray-50"
               />
-              <div className="flex flex-col ms-3">
-                <span className="text-white font-semibold text-md">
+              <div className="min-w-0 flex-auto">
+                <p className="text-md font-semibold leading-6 text-gray-100">
                   {`${user?.name} ${user?.surname}`}
-                </span>
-                <span className="text-neutral-400 text-sm">
+                </p>
+                <p className="truncate text-sm leading-5 text-gray-500">
                   @{user.username}
-                </span>
+                </p>
               </div>
             </Link>
             {!username ? (
@@ -56,16 +55,16 @@ const UserList = ({ user, username }) => {
                 onClick={handleFollow}
                 className={`${
                   followed
-                    ? "bg-transparent text-white"
-                    : "bg-white text-black border-black"
-                } rounded-full font-semibold hover:opacity-80 transition border-[1px] bg-white text-black border-black text-sm px-4`}
+                    ? "bg-white text-black border-black"
+                    : " bg-transparent text-white"
+                } px-5 py-1 text-sm font-medium rounded-full hover:bg-white hover:text-black hover:text-xs transition`}
               >
-                {isLoading ? "Loading" : followed ? "Following" : "Follow"}
+                {followed ? "Loading" : "Follow"}
               </button>
             ) : null}
-          </div>
+          </li>
           <Divider variant="middle" />
-        </div>
+        </ul>
       ) : null}
     </>
   );

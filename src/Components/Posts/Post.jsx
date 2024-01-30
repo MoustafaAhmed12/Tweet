@@ -33,20 +33,18 @@ const Post = ({ post, currentUser }) => {
     setIsLiked(!isLiked);
   };
 
-  const likes = () => {
-    if (like) {
-      if (isLiked && like - 1 === 0) {
-        return "You";
-      } else if (isLiked && like - 1 === 1) {
-        return "You and 1 more";
-      } else if (isLiked && like - 1 !== 1) {
-        return `You and ${like - 1} others`;
-      } else {
-        return like;
-      }
-    }
-    return "like";
-  };
+  // const likes = () => {
+  //   if (like) {
+  //     if (isLiked && like - 1 === 0) {
+  //       return "You";
+  //     } else if (isLiked && like - 1 === 1) {
+  //       return "You and 1 more";
+  //     } else {
+  //       return like;
+  //     }
+  //   }
+  //   return "like";
+  // };
 
   const { desc, createdAt } = post;
   const { name, surname, username, profilePicture } = post.userId;
@@ -59,27 +57,16 @@ const Post = ({ post, currentUser }) => {
   };
 
   dayjs.extend(relativeTime);
-
   return (
     <>
-      <div
-        className="
-        border-y-[1px] 
-        border-neutral-800 
-        p-5 
-        cursor-pointer 
-        hover:bg-neutral-900 
-        transition
-      "
-      >
+      <div className="border-y-[1px] border-neutral-800 p-5 cursor-pointer hover:bg-neutral-900 transition">
         <div className="flex flex-row items-start gap-3">
           <Avatar src={profilePicture} alt="Img Profile" onClick={goToUser} />
-
           <div>
-            <div className="flex flex-row max-sm:flex-col max-sm:items-start max-sm:gap-1 items-center gap-2 relative">
+            <div className="flex flex-row items-center gap-2 relative">
               <p
                 onClick={goToUser}
-                className="text-white font-semibold cursor-pointer hover:underline"
+                className="text-white max-sm:text-sm font-semibold cursor-pointer hover:underline"
               >
                 {name} {surname}
               </p>
@@ -90,7 +77,7 @@ const Post = ({ post, currentUser }) => {
                 @{username}
               </span>
               <span className="text-neutral-500 text-sm">
-                {dayjs(createdAt).fromNow()}
+                {dayjs(createdAt).fromNow().slice(0, 3)}
               </span>
               {currentUser.username === username ? (
                 <PostAction post={post} currentUser={currentUser} />
@@ -102,15 +89,7 @@ const Post = ({ post, currentUser }) => {
             <div className="flex flex-row items-center mt-3 gap-10">
               <div
                 onClick={likeHandler}
-                className="
-                flex 
-                flex-row 
-                items-center 
-                gap-2 
-                cursor-pointer 
-                transition 
-                hover:text-[#D2156D]
-            "
+                className="flex flex-row items-center gap-2 cursor-pointer transition hover:text-[#D2156D]"
               >
                 {isLiked ? (
                   <FaHeart className="text-[#D2156D]" size={20} />
@@ -120,7 +99,7 @@ const Post = ({ post, currentUser }) => {
                     size={22}
                   />
                 )}
-                <p>{likes() || ""}</p>
+                <p>{like || 0}</p>
               </div>
               <div
                 onClick={goToPost}
