@@ -7,7 +7,7 @@ import { Await, useLoaderData } from "react-router-dom";
 const Explore = () => {
   const { posts } = useLoaderData();
   useEffect(() => {
-    document.title = "Twitter | Explore";
+    document.title = "Tweet / Explore";
   }, []);
 
   return (

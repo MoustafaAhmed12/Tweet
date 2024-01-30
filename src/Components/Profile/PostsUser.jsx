@@ -58,7 +58,9 @@ const PostUser = ({ post, currentUser, user }) => {
                 {dayjs(createdAt).fromNow().slice(0, 3)}
               </span>
 
-              <PostAction post={post} currentUser={currentUser} />
+              {currentUser.username === username ? (
+                <PostAction post={post} currentUser={currentUser} />
+              ) : null}
             </div>
             <div onClick={goToPost} className="text-white mt-1 max-sm:text-xs">
               {desc}

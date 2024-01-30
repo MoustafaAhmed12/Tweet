@@ -8,7 +8,7 @@ const User = () => {
   const { username } = useParams();
   const user = useLoaderData();
   useEffect(() => {
-    document.title = `Twitter | Profile | ${username}`;
+    document.title = `Tweet / Profile | ${username}`;
   }, [username]);
   return (
     <>
