@@ -48,10 +48,15 @@ const userSlice = createSlice({
     currentUser: {},
     isLoading: false,
     error: "",
+    isFollow: false,
+    followed: false,
   },
   reducers: {
     logOutFun: (state) => {
       state.currentUser = {};
+    },
+    handleFollowing: (state, { payload }) => {
+      state.followed = state.currentUser.followings.includes(payload);
     },
   },
   extraReducers: (builder) => {
@@ -67,13 +72,21 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
+      .addCase(followUser.pending, (state) => {
+        state.isFollow = true;
+      })
       .addCase(followUser.fulfilled, (state, { payload }) => {
+        state.isFollow = false;
         state.currentUser.followings = [
           ...state.currentUser.followings,
           payload,
         ];
       })
+      .addCase(unfollowUser.pending, (state) => {
+        state.isFollow = true;
+      })
       .addCase(unfollowUser.fulfilled, (state, { payload }) => {
+        state.isFollow = false;
         state.currentUser.followings = state.currentUser.followings.filter(
           (f) => f !== payload
         );
@@ -84,5 +97,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { logOutFun } = userSlice.actions;
+export const { logOutFun, handleFollowing } = userSlice.actions;
 export default userSlice.reducer;

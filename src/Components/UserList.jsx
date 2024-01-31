@@ -11,14 +11,23 @@ const UserList = ({ user, username }) => {
     currentUser.followings?.includes(user?._id)
   );
 
-  const handleFollow = useCallback(async () => {
+  const handleUnfollow = useCallback(async () => {
     try {
       if (followed) {
         dispatch(
           unfollowUser({ userId: user._id, currentId: currentUser._id })
         );
         toast.success(`You Unfollow ${user.name} ${user.surname}`);
-      } else {
+      }
+      setFollowed(!followed);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, [currentUser, dispatch, followed, user]);
+
+  const handleFollow = useCallback(async () => {
+    try {
+      if (!followed) {
         dispatch(followUser({ userId: user._id, currentId: currentUser._id }));
         toast.success(`You Follow ${user.name} ${user.surname}`);
       }
@@ -53,11 +62,22 @@ const UserList = ({ user, username }) => {
             {!username ? (
               <button
                 onClick={handleFollow}
-                className={`bg-transparent text-sky-700 px-5 py-1 text-sm font-medium rounded-full hover:text-sky-600 transition`}
+                className={`bg-transparent text-sky-700 py-1 text-sm font-medium rounded-full hover:text-sky-600 transition ${
+                  followed ? "text-white" : ""
+                }`}
               >
                 {followed ? "Loading" : "Follow"}
               </button>
-            ) : null}
+            ) : (
+              <button
+                onClick={handleUnfollow}
+                className={`bg-transparent text-red-700 py-1 text-sm font-medium rounded-full hover:text-red-600 transition ${
+                  !followed ? "text-white" : ""
+                }`}
+              >
+                {!followed ? "Loading" : "unFollow"}
+              </button>
+            )}
           </li>
           <Divider variant="middle" />
         </ul>

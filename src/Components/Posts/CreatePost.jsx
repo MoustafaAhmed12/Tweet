@@ -68,21 +68,3 @@ const CreatePost = () => {
 };
 
 export default CreatePost;
-
-/*
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const postData = { ...post, userId: currentUser._id };
-    try {
-      const { data } = await axiosInstance.post("/post", postData);
-      toast.success("Created Post");
-      const updatePosts = { userId: postData.userId, postId: data._id };
-      await axiosInstance.patch(`/user/${postData.userId}/posts`, updatePosts);
-    } catch (error) {
-      console.log(error);
-    }
-    setPost({ desc: "" });
-  };
-
-  */

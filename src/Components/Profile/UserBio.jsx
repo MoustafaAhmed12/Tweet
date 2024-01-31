@@ -1,23 +1,48 @@
 import { BiCalendar } from "react-icons/bi";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EditProfile from "./../EditProfile";
+import { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  followUser,
+  handleFollowing,
+  unfollowUser,
+} from "./../../GlobalState/userSlice";
+import toast from "react-hot-toast";
 
-const UserBio = ({ user, handleFollow, followed }) => {
-  const { currentUser } = useSelector((state) => state.user);
+const UserBio = ({ user }) => {
+  const { currentUser, isFollow, followed } = useSelector(
+    (state) => state.user
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(handleFollowing(user._id));
+  });
+
+  const handleFollow = useCallback(async () => {
+    try {
+      if (followed) {
+        dispatch(
+          unfollowUser({ userId: user._id, currentId: currentUser._id })
+        );
+        toast.success(`You Unfollow ${user.name} ${user.surname}`);
+      } else {
+        dispatch(followUser({ userId: user._id, currentId: currentUser._id }));
+        toast.success(`You Follow ${user.name} ${user.surname}`);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [currentUser, dispatch, followed, user]);
 
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-
-  console.log(followed);
-
-  console.log(user._id);
-  console.log(currentUser.followings);
 
   dayjs.extend(relativeTime);
   return (
@@ -28,24 +53,7 @@ const UserBio = ({ user, handleFollow, followed }) => {
           {currentUser?._id === user._id ? (
             <button
               className=" disabled:opacity-70
-              max-sm:text-sm
-        disabled:cursor-not-allowed
-        rounded-full
-        font-bold
-        hover:opacity-80
-        transition
-        border-[1px]
-        w-fit
-        bg-transparent
-        text-white
-        border-white
-        text-md
-        px-5
-        py-2
-        mt-1
-        mr-2
-        hover:bg-white hover:text-black hover:border-black
-        "
+              max-sm:text-sm disabled:cursor-not-allowed rounded-full font-bold hover:opacity-80 transition border-[1px] w-fit bg-transparent text-white border-white text-md px-5 py-2 mt-1 mr-2 hover:bg-white hover:text-black hover:border-black"
               onClick={handleClickOpen}
             >
               Edit Profile
@@ -59,7 +67,7 @@ const UserBio = ({ user, handleFollow, followed }) => {
                   : "bg-white text-black border-black"
               }  text-md px-5 py-2 mr-2 mt-1 max-sm:text-sm`}
             >
-              {followed ? "Following" : "Follow"}
+              {isFollow ? "Loading" : followed ? "Following" : "Follow"}
             </button>
           )}
         </div>
@@ -70,16 +78,7 @@ const UserBio = ({ user, handleFollow, followed }) => {
           </div>
           <div className="flex flex-col mt-4">
             <p className="text-white">{user?.bio}</p>
-            <div
-              className="
-              flex 
-              flex-row 
-              items-center 
-              gap-2 
-              mt-4 
-              text-neutral-500
-          "
-            >
+            <div className="flex flex-row items-center gap-2 mt-4 text-neutral-500">
               <BiCalendar size={24} />
               <p>Joined {dayjs(user.createdAt).fromNow()}</p>
             </div>

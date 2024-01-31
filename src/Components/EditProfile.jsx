@@ -44,24 +44,7 @@ export default function FormDialog({
         <DialogTitle className="bg-black text-white w-[inherit] flex justify-between">
           {isCreatePost ? "Create Post" : "  Edit Profile"}
           <button
-            className=" disabled:opacity-70
-        disabled:cursor-not-allowed
-        rounded-full
-        font-bold
-        hover:opacity-80
-        transition
-        bg-transparent
-        text-white
-        border-white
-        text-md
-        p-2
-        w-10
-        h-10
-      flex
-      justify-center items-center
-        
-    
-        "
+            className=" disabled:opacity-70 disabled:cursor-not-allowed rounded-full font-bold hover:opacity-80 transition bg-transparent text-white border-white text-md p-2 w-10 h-10 ex stify-center items-center"
             onClick={handleClose}
           >
             X
@@ -138,7 +121,7 @@ export default function FormDialog({
               </DialogActions>
             </Form>
           ) : (
-            <CreatePost handleClose={handleClose} />
+            <CreatePost />
           )}
         </DialogContent>
       </Dialog>

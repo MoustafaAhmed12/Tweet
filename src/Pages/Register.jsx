@@ -55,7 +55,7 @@ const Register = () => {
     <>
       <div className="flex justify-between w-[95%] md:max-w-[80%] h-screen items-center mx-auto max-lg:justify-center">
         <img
-          src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+          src="https://thehandyx.com/static/media/otpverification.a9199085.svg"
           alt="Img-Register"
           className="hidden lg:block w-[50%]"
         />

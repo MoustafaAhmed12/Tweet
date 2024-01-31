@@ -123,6 +123,7 @@ const PostAction = ({ post, currentUser }) => {
             className="w-full"
             type="submit"
             disableRipple
+            onClick={handleClose}
           >
             <MdDelete size={22} className="me-1" />
             <span>Delete Post</span>
@@ -174,7 +175,10 @@ const PostAction = ({ post, currentUser }) => {
                 <Button
                   type="submit"
                   disabled={!postEdit.desc}
-                  onClick={handleCloseE}
+                  onClick={() => {
+                    handleClose();
+                    handleCloseE();
+                  }}
                 >
                   Continue
                 </Button>
