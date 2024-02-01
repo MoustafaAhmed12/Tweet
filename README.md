@@ -18,18 +18,18 @@ follow other users, and engage in discussions through comments and likes.
 - **Responsive Design:** The application is optimized for various screen sizes and devices.
 - 
  ## Tools:
-- **[Yup, Formik, jwt-decode] for User Authentication and Form handling & validation.
-- **Using React-router-dom to navigate between pages, [Link, NavLink, useNavigate, useParams]
-- **SPA
-- **Fetching data from the API, sending, deleting, and updating them using axios,
+- [Yup, Formik, jwt-decode] for User Authentication and Form handling & validation.
+- Using React-router-dom to navigate between pages, [Link, NavLink, useNavigate, useParams]
+- SPA
+- Fetching data from the API, sending, deleting, and updating them using axios,
 and using [loader, defer] for SSR [Side Server Rendering].
-- **Redux-Toolkit & redux-thunk for Data Management, [createAsyncThunk]
-- **Generating separate meta titles & descriptions for each Page
-- **React hooks (useEffect, useState, usecallback, useLoaderData)
-- **Tailwind CSS
-- **using react libraries for better ui
-- **github:https://github.com/MoustafaAhmed12/Tweet
-- **live:https://tweet-post.netlify.app/
+- Redux-Toolkit & redux-thunk for Data Management, [createAsyncThunk]
+- Generating separate meta titles & descriptions for each Page
+- React hooks (useEffect, useState, usecallback, useLoaderData)
+- Tailwind CSS
+- using react libraries for better ui
+- github:https://github.com/MoustafaAhmed12/Tweet
+- live:https://tweet-post.netlify.app/
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
