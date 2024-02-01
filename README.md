@@ -5,16 +5,18 @@ My Social Media React Project.
 This is a social media web application built with React. It provides users with a platform to share posts,
 follow other users, and engage in discussions through comments and likes.
 
-🌟 Features
-User Authentication: Users can sign up, log in, and log out securely, [Yup, Formik, jwt-decode]
+## Features
+User Authentication: Users can sign up, log in, and log out securely.
 User Profile: Each user has a profile where they can view and edit their personal information.
-Post Creation: Users can create and publish posts with text.
-Post Interactions: Users can like and comment on
-Follow System: Users can follow other users to see their posts in their feeds.
+Post Creation: Users can create and publish posts with text, images, or videos.
+Post Interactions: Users can like, comment on, and share posts.
+Follow System: Users can follow other users to see their posts in their feed.
 News Feed: Users have a personalized news feed displaying posts from users they follow.
+Notifications: Users receive notifications for new likes, comments, and followers.
+Search Functionality: Users can search for other users or posts by keywords or usernames.
 Responsive Design: The application is optimized for various screen sizes and devices.
 
- & Tools:
+ ## Tools:
 1:[Yup, Formik, jwt-decode] for User Authentication and Form handling & validation.
 2:Using React-router-dom to navigate between pages, [Link, NavLink, useNavigate, useParams]
 3:SPA
