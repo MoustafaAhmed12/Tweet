@@ -55,7 +55,7 @@ const PostUser = ({ post, currentUser, user }) => {
                 @{username}
               </span>
               <span className="text-neutral-500 text-sm">
-                {dayjs(createdAt).fromNow().slice(0, 3)}
+                {dayjs(createdAt).fromNow()}
               </span>
 
               {currentUser.username === username ? (
